@@ -1,11 +1,11 @@
 # AutoCCX
-Contain lightly threaded apps to a single CCX on AMD Ryzen CPUs for Windows 1809 (LTSC)
+Contains lightly threaded apps to a single CCX on AMD Ryzen CPUs for Windows 1809 (LTSC 2019) and earlier versions
 
-It is a simple demo project to use Win32 APIs to set process affinity automatically so the foreground application binds to a single CCX when the CPU load falls within a single CCX core count. The application compiles to a command line exe, runs in command line and prints out status about current foreground application, it's CPU load and it's affinity mask. It is supposed to make lightly threaded applications (i.e. old apps, games) run better on Ryzen systems on Windows 10 LTSC 2019 build 1809, which does not have CCX aware thread scheduler.
+It is a simple demo project to use Win32 APIs to set process affinity automatically so the foreground application binds to a single CCX when the CPU load falls within a single CCX core count. The application compiles to a command line exe, runs in command line and prints out status about current foreground application, it's CPU load and it's affinity mask. It is supposed to make lightly threaded applications (i.e. old apps, games) run better on Ryzen systems on Windows 10 1809 (LTSC 2019) and earlier versions, which do not have CCX aware thread scheduler.
 
-It does not have persistent affect in your system. It only temporarily adjust thread affinity on foreground application. In worst case, exit the program and restart your foreground application will turn everything back to default state.
+It does not have persistent effect in your system. It only temporarily adjusts CPU thread affinity of foreground application. In worst case, exit the program and restart your foreground application will turn everything back to default state.
 
-It detects Zen, Zen+, Zen 2 and Zen 3 family of processors up to 16 cores and automatically find the CCX count and cores per CCX and tries to allocate foreground application to CCX1, unless it is given a command line argument [n] where n = perferred CCX index (starts from 1). For Example:
+It detects Zen, Zen+, Zen 2 and Zen 3 family of processors up to 16 cores and automatically finds the CCX count and cores per CCX and tries to allocate foreground application to CCX1, unless it is given a command line argument [n] where n = preferred CCX index (starts from 1). For Example:
  > AutoCCX 2
  
 Will start the program and bind lightly threaded foreground application to CCX2.

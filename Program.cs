@@ -143,7 +143,7 @@ namespace AutoCCX
 
                 lastTime = curTime;
                 lastTotalProcessorTime = curTotalProcessorTime;
-                double singleCCDUsage = (AffinityMasks.Length / 8.0) * 95;
+                double singleCCDUsage = (0.5 / AffinityMasks.Length) * 95;
 
                 if (CPUUsage <= singleCCDUsage)
                 {
